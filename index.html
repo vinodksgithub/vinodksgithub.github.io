@@ -19,19 +19,28 @@
         button {
             margin-right: 5px;
         }
+
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
+<div id="header">
+    <img src="HeaderImage.jpg" alt="Header Image" title="Header Image">
+</div>
+
 <div class="image-container">
-    <img src="image1.jpg" alt="Image 1">
+    <img src="image1.jpg" alt="Image 1" title="Image 1">
     <button onclick="addToCart(1, '+')" id="addBtn1">+</button>
     <span id="count1">Count: 0</span>
     <button onclick="addToCart(1, '-')" id="subtractBtn1">-</button>
 </div>
 
 <div class="image-container">
-    <img src="image2.jpg" alt="Image 2">
+    <img src="image2.jpg" alt="Image 2" title="Image 2">
     <button onclick="addToCart(2, '+')" id="addBtn2">+</button>
     <span id="count2">Count: 0</span>
     <button onclick="addToCart(2, '-')" id="subtractBtn2">-</button>
