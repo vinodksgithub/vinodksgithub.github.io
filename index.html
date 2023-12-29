@@ -25,20 +25,20 @@
 
 <div class="image-container">
     <img src="image1.jpg" alt="Image 1">
-    <button onclick="addToCart(1, '+')">+</button>
+    <button onclick="addToCart(1, '+')" id="addBtn1">+</button>
     <span id="count1">Count: 0</span>
-    <button onclick="addToCart(1, '-')">-</button>
+    <button onclick="addToCart(1, '-')" id="subtractBtn1">-</button>
 </div>
 
 <div class="image-container">
     <img src="image2.jpg" alt="Image 2">
-    <button onclick="addToCart(2, '+')">+</button>
+    <button onclick="addToCart(2, '+')" id="addBtn2">+</button>
     <span id="count2">Count: 0</span>
-    <button onclick="addToCart(2, '-')">-</button>
+    <button onclick="addToCart(2, '-')" id="subtractBtn2">-</button>
 </div>
 
 <p id="totalCount">Total Count: 0</p>
-<button onclick="resetCounts()">Reset</button>
+<button onclick="resetCounts()" id="resetBtn">Reset</button>
 
 <script>
     let counts = { 1: 0, 2: 0 };
