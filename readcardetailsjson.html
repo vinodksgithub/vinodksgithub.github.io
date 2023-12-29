@@ -29,15 +29,16 @@
     <table id="myTable">
         <!-- Create a table header row -->
         <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Color</th>
         </tr>
     </table>
 
     <script>
         // Fetch the JSON data from the URL
-        fetch('https://vinodksgithub.github.io/cardetails.json')
+        fetch('https://your_username.github.io/your_repository_name/carddetails.json')
             .then(response => response.json()) // Parse the JSON data
             .then(data => {
                 // Get the table element by its ID
@@ -47,17 +48,20 @@
                     // Create a table row element
                     let row = document.createElement('tr');
                     // Create a table cell element for each property
-                    let nameCell = document.createElement('td');
-                    let ageCell = document.createElement('td');
-                    let genderCell = document.createElement('td');
+                    let makeCell = document.createElement('td');
+                    let modelCell = document.createElement('td');
+                    let yearCell = document.createElement('td');
+                    let colorCell = document.createElement('td');
                     // Set the cell content from the data
-                    nameCell.innerHTML = data[i].name;
-                    ageCell.innerHTML = data[i].age;
-                    genderCell.innerHTML = data[i].gender;
+                    makeCell.innerHTML = data[i].make;
+                    modelCell.innerHTML = data[i].model;
+                    yearCell.innerHTML = data[i].year;
+                    colorCell.innerHTML = data[i].color;
                     // Append the cells to the row
-                    row.appendChild(nameCell);
-                    row.appendChild(ageCell);
-                    row.appendChild(genderCell);
+                    row.appendChild(makeCell);
+                    row.appendChild(modelCell);
+                    row.appendChild(yearCell);
+                    row.appendChild(colorCell);
                     // Append the row to the table
                     table.appendChild(row);
                 }
