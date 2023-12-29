@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Example</title>
+    <style>
+        /* Style the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        /* Style the table cells */
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        /* Style the table header */
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Create a table element with an ID -->
+    <table id="myTable">
+        <!-- Create a table header row -->
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+    </table>
+
+    <script>
+        // Fetch the JSON data from the URL
+        fetch('https://vinodksgithub.github.io/cardetails.json')
+            .then(response => response.json()) // Parse the JSON data
+            .then(data => {
+                // Get the table element by its ID
+                let table = document.getElementById('myTable');
+                // Loop through the data array
+                for (let i = 0; i < data.length; i++) {
+                    // Create a table row element
+                    let row = document.createElement('tr');
+                    // Create a table cell element for each property
+                    let nameCell = document.createElement('td');
+                    let ageCell = document.createElement('td');
+                    let genderCell = document.createElement('td');
+                    // Set the cell content from the data
+                    nameCell.innerHTML = data[i].name;
+                    ageCell.innerHTML = data[i].age;
+                    genderCell.innerHTML = data[i].gender;
+                    // Append the cells to the row
+                    row.appendChild(nameCell);
+                    row.appendChild(ageCell);
+                    row.appendChild(genderCell);
+                    // Append the row to the table
+                    table.appendChild(row);
+                }
+            })
+            .catch(error => console.error(error)); // Handle any errors
+    </script>
+</body>
+</html>
