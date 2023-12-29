@@ -26,16 +26,18 @@
 <div class="image-container">
     <img src="image1.jpg" alt="Image 1">
     <button onclick="addToCart(1, '+')">+</button>
+    <span id="count1">Count: 0</span>
     <button onclick="addToCart(1, '-')">-</button>
 </div>
 
 <div class="image-container">
     <img src="image2.jpg" alt="Image 2">
     <button onclick="addToCart(2, '+')">+</button>
+    <span id="count2">Count: 0</span>
     <button onclick="addToCart(2, '-')">-</button>
 </div>
 
-<p id="count">Count: 0</p>
+<p id="totalCount">Total Count: 0</p>
 <button onclick="resetCounts()">Reset</button>
 
 <script>
@@ -48,18 +50,20 @@
             counts[imageNumber]--;
         }
 
-        updateCount();
+        updateCount(imageNumber);
         console.log(`Image ${imageNumber}: Count ${operation === '+' ? 'incremented' : 'decremented'}.`);
     }
 
-    function updateCount() {
+    function updateCount(imageNumber) {
+        document.getElementById(`count${imageNumber}`).innerText = `Count: ${counts[imageNumber]}`;
         let totalCount = counts[1] + counts[2];
-        document.getElementById("count").innerText = `Count: ${totalCount}`;
+        document.getElementById("totalCount").innerText = `Total Count: ${totalCount}`;
     }
 
     function resetCounts() {
         counts = { 1: 0, 2: 0 };
-        updateCount();
+        updateCount(1);
+        updateCount(2);
         console.log("Counts reset.");
     }
 </script>
