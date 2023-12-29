@@ -2,75 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flipkart Profile</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file link here -->
+    <title>HTML Tabs</title>
+    <style>
+        /* Style the tab container */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the tab buttons */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <!-- Navigation bar -->
-    <nav>
-        <!-- Logo -->
-        <img src="flipkart-logo.png" alt="Flipkart Logo">
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Create')">Create</button>
+        <button class="tablinks" onclick="openTab(event, 'Delete')">Delete</button>
+        <button class="tablinks" onclick="openTab(event, 'Update')">Update</button>
+        <button class="tablinks" onclick="openTab(event, 'Search')">Search</button>
+        <button class="tablinks" onclick="openTab(event, 'Summary')">Summary</button>
+    </div>
 
-        <!-- Search bar -->
-        <input type="text" placeholder="Search for products, brands and more">
+    <!-- Tab content -->
+    <div id="Create" class="tabcontent">
+        <h3>Create</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Quisque euismod augue quis nisi tincidunt, id tincidunt leo consequat.</p>
+    </div>
 
-        <!-- Navigation menu -->
-        <ul>
-            <!-- Add more list items as needed for each menu option -->
-            <li><a href="#">Electronics</a></li>
-            ...
-        </ul>
+    <div id="Delete" class="tabcontent">
+        <h3>Delete</h3>
+        <p>Phasellus vitae nisl quis lacus fringilla aliquet.</p>
+        <p>Donec quis lectus et eros sollicitudin ultrices.</p>
+    </div>
 
-        <!-- User profile and cart icons -->
-        ...
-    </nav>
-</header>
+    <div id="Update" class="tabcontent">
+        <h3>Update</h3>
+        <p>Maecenas sed nisi quis leo sagittis sagittis.</p>
+        <p>Nulla facilisi. Sed quis nunc ut lorem lacinia malesuada.</p>
+    </div>
 
-<main>
+    <div id="Search" class="tabcontent">
+        <h3>Search</h3>
+        <p>Aliquam erat volutpat. Vivamus eget sem at nisl faucibus commodo.</p>
+        <p>Etiam auctor nisl quis turpis gravida, ac ornare leo luctus.</p>
+    </div>
 
-    <!-- Sidebar with user information and settings options-->
-    <aside>
-        ...
-        
-         <!-- User greeting -->
-         Hello, Vinod
+    <div id="Summary" class="tabcontent">
+        <h3>Summary</h3>
+        <p>Praesent quis dolor sit amet arcu fermentum interdum.</p>
+        <p>Curabitur quis magna quis nisi vehicula tristique.</p>
+    </div>
 
-         ...
+    <script>
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
 
-         MY ORDERS
-         
-         ACCOUNT SETTINGS
-         
-         PAYMENTS
-         
-         ...
-     </aside>
+        // Function to open a tab
+        function openTab(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
 
-     <!-- Main content area with personal information form-->
-     ...
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
 
-     Personal Information
-     
-     vinod
-     
-     Your Gender Male Female
-     
-     Email Address vinod.n@abc@gmail.com
-     
-     Mobile Number +919741114861
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
 
-     
-</main>
-
-<footer> 
-   ... 
-   Footer content goes here 
-   ... 
-</footer> 
-
-</body> 
-</html> 
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
