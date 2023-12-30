@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Example</title>
+</head>
+<body>
+
+    <!-- Create a form element with an ID -->
+    <form id="loginForm">
+        <!-- Create a label and an input for userid -->
+        <label for="userid">User ID:</label>
+        <input type="text" id="userid" name="userid" required>
+
+        <!-- Create a label and an input for password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Create a submit button -->
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Create a div element to display the message -->
+    <div id="message"></div>
+
+    <script>
+        // Get the form element by its ID
+        const form = document.getElementById("loginForm");
+
+        // Get the message element by its ID
+        const message = document.getElementById("message");
+
+        // Add an event listener for the submit event
+        form.addEventListener("submit", (event) => {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Get the userid and password values from the form
+            const userid = form.elements["userid"].value;
+            const password = form.elements["password"].value;
+
+            // Check if the userid and password match the given criteria
+            if (userid === "user1" && password === "pwd") {
+                // Display a valid login message
+                message.textContent = "ValidLogin";
+            } else {
+                // Display an invalid login message
+                message.textContent = "Invalid login";
+            }
+        });
+    </script>
+</body>
+</html>
