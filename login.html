@@ -7,14 +7,20 @@
     <style>
         /* Style the body element */
         body {
-            /* Use a flexbox layout */
-            display: flex;
-            /* Align items vertically */
-            align-items: center;
-            /* Center items horizontally */
-            justify-content: center;
-            /* Set the height to 100% of the viewport */
-            height: 100vh;
+            /* Set the background color to light blue */
+            background-color: lightblue;
+        }
+
+        /* Style the header element */
+        header {
+            /* Set the background image to the header image */
+            background-image: url("https://your_username.github.io/your_repository_name/loginheader.jpg");
+            /* Set the background size to cover the element */
+            background-size: cover;
+            /* Set the background repeat to no-repeat */
+            background-repeat: no-repeat;
+            /* Set the height to 200px */
+            height: 200px;
         }
 
         /* Style the form element */
@@ -31,6 +37,8 @@
             border: 1px solid black;
             /* Set some padding */
             padding: 20px;
+            /* Set the background color to white */
+            background-color: white;
         }
 
         /* Style the label elements */
@@ -57,18 +65,33 @@
             margin: 10px;
         }
 
-        /* Style the div element for the message */
-        div {
+        /* Style the div element for the messages */
+        #message {
             /* Set a fixed width */
             width: 300px;
             /* Set some padding */
             padding: 10px;
             /* Set a border */
             border: 1px solid black;
+            /* Center the text */
+            text-align: center;
+        }
+
+        /* Style the valid message with green color */
+        .valid {
+            color: green;
+        }
+
+        /* Style the invalid message with red color */
+        .invalid {
+            color: red;
         }
     </style>
 </head>
 <body>
+
+    <!-- Add a header element -->
+    <header></header>
 
     <!-- Modify the HTML structure of the form element -->
     <form id="loginForm">
@@ -85,10 +108,9 @@
         <input type="reset" value="Reset">
         <!-- Create a submit button -->
         <button type="submit">Login</button>
+        <!-- Add a div element to display the messages -->
+        <div id="message"></div>
     </form>
-
-    <!-- Create a div element to display the message -->
-    <div id="message"></div>
 
     <script>
         // Get the form element by its ID
@@ -108,13 +130,15 @@
 
             // Check if the userid and password match the given criteria
             if (userid === "user1" && password === "pwd") {
-                // Display a valid login message
+                // Display a valid login message with green color
                 message.textContent = "ValidLogin";
+                message.className = "valid";
                 // Redirect to landing.html page
                 window.location.href = "index.html";
             } else {
-                // Display an invalid login message
+                // Display an invalid login message with red color
                 message.textContent = "Invalid login";
+                message.className = "invalid";
             }
         });
     </script>
