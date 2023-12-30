@@ -3,142 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Example</title>
+    <!-- Link to the jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Add a style tag with some CSS rules -->
     <style>
-        /* Style the body element */
-        body {
-            /* Set the background color to light blue */
-            background-color: lightblue;
-        }
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-        /* Style the header element */
-        header {
-            /* Set the background image to the header image */
-            background-image: url("https://your_username.github.io/your_repository_name/loginheader.jpg");
-            /* Set the background size to cover the element */
-            background-size: cover;
-            /* Set the background repeat to no-repeat */
-            background-repeat: no-repeat;
-            /* Set the height to 200px */
-            height: 200px;
+        .login-page {
+            width: 360px;
+            padding: 8% 0 0;
+            margin: auto;
         }
-
-        /* Style the form element */
-        form {
-            /* Use a flexbox layout */
-            display: flex;
-            /* Arrange items in a column */
-            flex-direction: column;
-            /* Align items horizontally */
-            align-items: center;
-            /* Set a fixed width */
-            width: 300px;
-            /* Set a border */
-            border: 1px solid black;
-            /* Set some padding */
-            padding: 20px;
-            /* Set the background color to white */
-            background-color: white;
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         }
-
-        /* Style the label elements */
-        label {
-            /* Set a fixed width */
-            width: 100px;
-            /* Align text to the right */
-            text-align: right;
-            /* Set some margin */
-            margin-right: 10px;
+        .form input {
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
         }
-
-        /* Style the input elements */
-        input {
-            /* Set a fixed width */
-            width: 150px;
+        .form button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #4CAF50;
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
         }
-
-        /* Style the button elements */
-        button {
-            /* Set a fixed width */
-            width: 100px;
-            /* Set some margin */
-            margin: 10px;
+        .form button:hover,.form button:active,.form button:focus {
+            background: #43A047;
         }
-
-        /* Style the div element for the messages */
-        #message {
-            /* Set a fixed width */
-            width: 300px;
-            /* Set some padding */
-            padding: 10px;
-            /* Set a border */
-            border: 1px solid black;
-            /* Center the text */
+        .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .form .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .form .register-form {
+            display: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .container:before, .container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .container .info {
+            margin: 50px auto;
             text-align: center;
         }
-
-        /* Style the valid message with green color */
-        .valid {
-            color: green;
+        .container .info h1 {
+            margin: 0 0 15px;
+            padding: 0;
+            font-size: 36px;
+            font-weight: 300;
+            color: #1a1a1a;
         }
-
-        /* Style the invalid message with red color */
-        .invalid {
-            color: red;
+        .container .info span {
+            color: #4d4d4d;
+            font-size: 12px;
+        }
+        .container .info span a {
+            color: #000000;
+            text-decoration: none;
+        }
+        .container .info span .fa {
+            color: #EF3B3A;
+        }
+        body {
+            background: #76b852; /* fallback for old browsers */
+            background: rgb(141,194,111);
+            background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;      
         }
     </style>
 </head>
 <body>
 
-    <!-- Add a header element -->
-    <header></header>
-
-    <!-- Modify the HTML structure of the form element -->
-    <form id="loginForm">
-        <!-- Group the label and input elements in pairs using div elements -->
-        <div>
-            <label for="userid">User ID:</label>
-            <input type="text" id="userid" name="userid" required>
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <input type="text" placeholder="name"/>
+                <input type="password" placeholder="password"/>
+                <input type="text" placeholder="email address"/>
+                <button>create</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form">
+                <input type="text" placeholder="username"/>
+                <input type="password" placeholder="password"/>
+                <button>login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <!-- Add a reset button using an input element -->
-        <input type="reset" value="Reset">
-        <!-- Create a submit button -->
-        <button type="submit">Login</button>
-        <!-- Add a div element to display the messages -->
-        <div id="message"></div>
-    </form>
+    </div>
 
     <script>
-        // Get the form element by its ID
-        const form = document.getElementById("loginForm");
+        // Toggle between the two forms
+        $('.message a').click(function(){
+            $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
 
-        // Get the message element by its ID
-        const message = document.getElementById("message");
-
-        // Add an event listener for the submit event
-        form.addEventListener("submit", (event) => {
+        // Validate the user input and display the message
+        $('.login-form').submit(function(event){
             // Prevent the default form submission behavior
             event.preventDefault();
-
-            // Get the userid and password values from the form
-            const userid = form.elements["userid"].value;
-            const password = form.elements["password"].value;
-
-            // Check if the userid and password match the given criteria
-            if (userid === "user1" && password === "pwd") {
-                // Display a valid login message with green color
-                message.textContent = "ValidLogin";
-                message.className = "valid";
-                // Redirect to landing.html page
+            // Get the username and password values from the form
+            var username = $('.login-form input[type="text"]').val();
+            var password = $('.login-form input[type="password"]').val();
+            // Check if the username and password match the given criteria
+            if (username === "user1" && password === "pwd") {
+                // Display a valid login message
+                alert("ValidLogin");
+                // Redirect to index.html page
                 window.location.href = "index.html";
             } else {
-                // Display an invalid login message with red color
-                message.textContent = "Invalid login";
-                message.className = "invalid";
+                // Display an invalid login message
+                alert("Invalid login");
             }
         });
     </script>
