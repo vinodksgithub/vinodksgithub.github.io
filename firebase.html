@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase Example</title>
+    <!-- Link to the Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+<body>
+
+    <!-- Create an element to display the data -->
+    <div id="data"></div>
+
+    <script>
+        // Initialize the Firebase app with your Web API Key and Project ID
+        const firebaseConfig = {
+            apiKey: "YOUR_WEB_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+
+        // Get a reference to the database service
+        const db = firebase.database(app);
+
+        // Get a reference to the data node
+        const dataRef = db.ref("data");
+
+        // Get the element to display the data
+        const dataDiv = document.getElementById("data");
+
+        // Read the data once
+        dataRef.once("value", (snapshot) => {
+            // Get the data value
+            const data = snapshot.val();
+
+            // Display the data as JSON
+            dataDiv.innerHTML = JSON.stringify(data, null, 2);
+        });
+    </script>
+</body>
+</html>
