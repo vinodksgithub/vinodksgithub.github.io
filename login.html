@@ -8,7 +8,6 @@
     <!-- Add a style tag with some CSS rules -->
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
         .login-page {
             width: 360px;
             padding: 8% 0 0;
@@ -106,20 +105,8 @@
             -moz-osx-font-smoothing: grayscale;      
         }
     </style>
-    <style>
-        /* Style for the slider button */
-        .slider {
-            width: 60px;
-            height: 34px;
-            background-color: #2196F3;
-            border: none;
-            border-radius: 34px;
-            cursor: pointer;
-            outline: none;
-    
 </head>
 <body>
-
     <div class="login-page">
         <div class="form">
             <form class="register-form">
@@ -132,18 +119,17 @@
             <form class="login-form">
                 <input type="text" class="username"/>
                 <input type="password" class="password"/>
-                <button class="LoginButton" id="LoginButton">login</button>
+                <button>login</button>
+                <button class="LoginButton">login</button>
                 <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
         </div>
     </div>
-
     <script>
         // Toggle between the two forms
         $('.message a').click(function(){
             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
-
         // Validate the user input and display the message
         $('.login-form').submit(function(event){
             // Prevent the default form submission behavior
@@ -163,8 +149,5 @@
             }
         });
     </script>
-
-
-    
 </body>
 </html>
