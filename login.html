@@ -106,6 +106,70 @@
             -moz-osx-font-smoothing: grayscale;      
         }
     </style>
+    <style>
+        /* Style the slider button */
+        .slider {
+            position: relative;
+            width: 60px;
+            height: 34px;
+        }
+
+        .slider input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+
+        .slider-track:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider-track {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider-track:before {
+            transform: translateX(26px);
+        }
+
+        /* Style the login button */
+        .login-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Show the login button when the slider is checked */
+        input:checked ~ .login-button {
+            display: block;
+        }
+    </style>
+
+    
 </head>
 <body>
 
@@ -152,5 +216,31 @@
             }
         });
     </script>
+
+ <p>Slide the button to enable the login button.</p>
+    <!-- Slider button -->
+    <label class="slider">
+        <input type="checkbox" id="slider-input">
+        <span class="slider-track"></span>
+    </label>
+    <!-- Login button -->
+    <button class="login-button" id="login-button">Login</button>
+    <!-- Script to delay the navigation -->
+    <script>
+        // Get the login button element
+        let loginButton = document.getElementById("login-button");
+        // Add a click event listener to the login button
+        loginButton.addEventListener("click", function() {
+            // Show a message that the navigation is delayed
+            alert("The navigation to the next page is delayed by 30 seconds.");
+            // Set a timeout function to navigate to the next page after 30 seconds
+            setTimeout(function() {
+                // Navigate to the next page (you can change the URL to your desired destination)
+                window.location.href = "https://www.w3docs.com/";
+            }, 30000); // 30000 milliseconds = 30 seconds
+        });
+    </script>
+
+    
 </body>
 </html>
