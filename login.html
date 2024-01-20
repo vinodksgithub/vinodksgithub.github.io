@@ -116,38 +116,6 @@
             border-radius: 34px;
             cursor: pointer;
             outline: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Styling for the slider's round handle */
-        .slider:before {
-            content: "";
-            position: absolute;
-            width: 26px;
-            height: 26px;
-            background-color: white;
-            border-radius: 50%;
-            transition: 0.4s;
-        }
-
-        /* Styling when the slider is in the "off" state */
-        .slider.off {
-            background-color: #ccc;
-        }
-
-        .slider.off:before {
-            transform: translateX(0);
-        }
-
-        /* Styling when the slider is in the "on" state */
-        .slider.on:before {
-            transform: translateX(26px);
-        }
-    </style>
-
     
 </head>
 <body>
@@ -196,46 +164,6 @@
         });
     </script>
 
- <!-- Login Button -->
-    <button id="LoginButton" onclick="redirectOnToggle()">Login</button>
-
-    <!-- Slider Button -->
-    <label class="switch">
-        <input type="checkbox" id="toggleSwitch" onclick="toggleLoginButton()">
-        <span class="slider" id="slider"></span>
-    </label>
-
-    <script>
-        function toggleLoginButton() {
-            var toggleSwitch = document.getElementById("toggleSwitch");
-            var loginButton = document.getElementById("LoginButton");
-            var slider = document.getElementById("slider");
-
-            if (toggleSwitch.checked) {
-                loginButton.disabled = false;
-                slider.classList.remove("off");
-                slider.classList.add("on");
-            } else {
-                loginButton.disabled = true;
-                slider.classList.remove("on");
-                slider.classList.add("off");
-            }
-        }
-
-        function redirectOnToggle() {
-            var toggleSwitch = document.getElementById("toggleSwitch");
-
-            if (toggleSwitch.checked) {
-                 setTimeout(function () {
-            redirectOnToggle();
-        }, 10000); // Set the delay in milliseconds (e.g., 1000ms = 1 second)
-                window.location.href = "index.html";
-            } else {
-                // You can handle the case when the button is clicked but not enabled (optional)
-                alert("Please enable the toggle to proceed.");
-            }
-        }
-    </script>
 
     
 </body>
