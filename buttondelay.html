@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delayed Text Display</title>
+    <style>
+        /* Style for the button */
+        #delayButton {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button to trigger delayed text display -->
+    <button id="delayButton" onclick="displayDelayedText()">Click Me</button>
+
+    <!-- Container for displaying the delayed text -->
+    <div id="delayedTextContainer"></div>
+
+    <script>
+        function displayDelayedText() {
+            var delayButton = document.getElementById("delayButton");
+            var delayedTextContainer = document.getElementById("delayedTextContainer");
+
+            // Disable the button during the delay
+            delayButton.disabled = true;
+
+            // Generate a random delay between 5 and 20 seconds (in milliseconds)
+            var randomDelay = Math.floor(Math.random() * (20000 - 5000 + 1) + 5000);
+
+            // Display the delayed text after the random delay
+            setTimeout(function () {
+                delayedTextContainer.innerHTML = "Text displayed after " + (randomDelay / 1000) + " seconds.";
+                // Re-enable the button after the text is displayed
+                delayButton.disabled = false;
+            }, randomDelay);
+        }
+    </script>
+
+</body>
+</html>
