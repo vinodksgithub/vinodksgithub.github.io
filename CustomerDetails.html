@@ -56,10 +56,10 @@
     button:hover {
         background-color: #0056b3;
     }
-    #message {
-        margin-top: 10px;
-        text-align: center;
+    .error {
         color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
     }
 </style>
 </head>
@@ -71,30 +71,37 @@
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
+            <span id="nameError" class="error"></span>
         </div>
         <div>
             <label for="age">Age:</label>
             <input type="number" id="age" name="age">
+            <span id="ageError" class="error"></span>
         </div>
         <div>
             <label for="address">Address:</label>
             <input type="text" id="address" name="address">
+            <span id="addressError" class="error"></span>
         </div>
         <div>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
+            <span id="emailError" class="error"></span>
         </div>
         <div>
             <label for="firstCompany">First Company:</label>
             <input type="text" id="firstCompany" name="firstCompany">
+            <span id="firstCompanyError" class="error"></span>
         </div>
         <div>
             <label for="income">Income:</label>
             <input type="number" id="income" name="income">
+            <span id="incomeError" class="error"></span>
         </div>
         <div>
             <label for="nationality">Nationality:</label>
             <input type="text" id="nationality" name="nationality">
+            <span id="nationalityError" class="error"></span>
         </div>
         <button type="submit">Submit</button>
         <button type="button" onclick="resetForm()">Reset</button>
@@ -113,9 +120,14 @@
         
         var formFields = document.querySelectorAll('#customerForm input');
         formFields.forEach(function(field) {
+            var fieldName = field.name;
+            var errorSpan = document.getElementById(fieldName + 'Error');
+            
             if (!field.value) {
                 formValid = false;
-                errorMessage += field.name + ' is required<br>';
+                errorSpan.textContent = fieldName + ' is required';
+            } else {
+                errorSpan.textContent = '';
             }
         });
         
@@ -124,12 +136,15 @@
             document.getElementById('message').style.color = 'green';
             document.getElementById('customerForm').reset();
         } else {
-            document.getElementById('message').innerHTML = errorMessage;
+            document.getElementById('message').innerHTML = '';
         }
     });
     
     function resetForm() {
         document.getElementById('customerForm').reset();
+        document.querySelectorAll('.error').forEach(function(errorSpan) {
+            errorSpan.textContent = '';
+        });
         document.getElementById('message').innerHTML = '';
     }
 </script>
