@@ -32,7 +32,8 @@
     }
     input[type="text"],
     input[type="number"],
-    input[type="email"] {
+    input[type="email"],
+    select {
         width: calc(100% - 12px);
         padding: 8px;
         margin-bottom: 15px;
@@ -41,7 +42,8 @@
     }
     input[type="text"]:focus,
     input[type="number"]:focus,
-    input[type="email"]:focus {
+    input[type="email"]:focus,
+    select:focus {
         outline: none;
         border-color: #007bff;
     }
@@ -100,7 +102,13 @@
         </div>
         <div>
             <label for="nationality">Nationality:</label>
-            <input type="text" id="nationality" name="nationality">
+            <select id="nationality" name="nationality">
+                <option value="India" selected>India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+            </select>
             <span id="nationalityError" class="error"></span>
         </div>
         <button type="submit">Submit</button>
@@ -118,7 +126,7 @@
         var formValid = true;
         var errorMessage = '';
         
-        var formFields = document.querySelectorAll('#customerForm input');
+        var formFields = document.querySelectorAll('#customerForm input, #customerForm select');
         formFields.forEach(function(field) {
             var fieldName = field.name;
             var errorSpan = document.getElementById(fieldName + 'Error');
