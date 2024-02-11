@@ -1,121 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Details Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .form {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-        }
-
-        .form label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .form input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .error {
-            color: red;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Details</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    form {
+        margin-top: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"] {
+        width: calc(100% - 12px);
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #message {
+        margin-top: 10px;
+        text-align: center;
+    }
+    .error {
+        color: red;
+    }
+</style>
 </head>
 <body>
-    <div class="form">
-        <h1>Customer Details Form</h1>
-        <form id="customer-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
-            <span class="error" id="name-error"></span>
 
-            <label for="age">Age</label>
-            <input type="number" id="age" name="age" min="0">
-            <span class="error" id="age-error"></span>
+<div class="container">
+    <h2>Customer Details Form</h2>
+    <form id="customerForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="firstCompany">First Company:</label>
+            <input type="text" id="firstCompany" name="firstCompany" required>
+        </div>
+        <div>
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" required>
+        </div>
+        <div>
+            <label for="nationality">Nationality:</label>
+            <input type="text" id="nationality" name="nationality" required>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
 
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address">
-            <span class="error" id="address-error"></span>
+    <div id="message"></div>
+</div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
-            <span class="error" id="email-error"></span>
+<script>
+    document.getElementById('customerForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+        
+        // Validate form fields
+        var formValid = true;
+        var errorMessage = '';
+        
+        var formFields = document.querySelectorAll('#customerForm input');
+        formFields.forEach(function(field) {
+            if (!field.value) {
+                formValid = false;
+                errorMessage += field.name + ' is required<br>';
+            }
+        });
+        
+        if (formValid) {
+            document.getElementById('message').innerHTML = 'Customer details recorded successfully';
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('customerForm').reset();
+        } else {
+            document.getElementById('message').innerHTML = errorMessage;
+            document.getElementById('message').style.color = 'red';
+        }
+    });
+    
+    function resetForm() {
+        document.getElementById('customerForm').reset();
+        document.getElementById('message').innerHTML = '';
+    }
+</script>
 
-            <label for="company">First Company</label>
-            <input type="text" id="company" name="company">
-            <span class="error" id="company-error"></span>
-
-            <label for="income">Income</label>
-            <input type="number" id="income" name="income" min="0">
-            <span class="error" id="income-error"></span>
-
-            <label for="nationality">Nationality</label>
-            <select id="nationality" name="nationality">
-                <option value="">-- Select one --</option>
-                <option value="India">India</option>
-                <option value="Russia">Russia</option>
-                <option value="Sri Lanka">Sri Lanka</option>
-                <option value="Japan">Japan</option>
-                <option value="UK">UK</option>
-            </select>
-            <span class="error" id="nationality-error"></span>
-
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
-        </form>
-        <p id="success-message"></p>
-    </div>
-
-    <script>
-        const form = document.getElementById('customer-form');
-        const successMessage = document.getElementById('success-message');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const age = document.getElementById('age').value;
-            const address = document.getElementById('address').value;
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            const income = document.getElementById('income').value;
-            const nationality = document.getElementById('nationality').value;
-
-            if (!name || !age || !address || !email || !company || !income || !nationality) {
-                document.getElementById('name-error').textContent = name ? '' : 'Name is required';
-                document.getElementById('age-error').textContent = age ? '' : 'Age is required';
-                document.getElementById('address-error').textContent = address ? '' : 'Address is required';
-                document.getElementById('email-error').textContent = email ? '' : 'Email is required';
-                document.getElementById('company-error').textContent = company ? '' : 'First Company is required';
-                document.getElementById('income
+</body>
+</html>
