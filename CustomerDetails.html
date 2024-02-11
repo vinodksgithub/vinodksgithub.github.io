@@ -59,8 +59,6 @@
     #message {
         margin-top: 10px;
         text-align: center;
-    }
-    .error {
         color: red;
     }
 </style>
@@ -72,31 +70,31 @@
     <form id="customerForm">
         <div>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name">
         </div>
         <div>
             <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
+            <input type="number" id="age" name="age">
         </div>
         <div>
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
+            <input type="text" id="address" name="address">
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email">
         </div>
         <div>
             <label for="firstCompany">First Company:</label>
-            <input type="text" id="firstCompany" name="firstCompany" required>
+            <input type="text" id="firstCompany" name="firstCompany">
         </div>
         <div>
             <label for="income">Income:</label>
-            <input type="number" id="income" name="income" required>
+            <input type="number" id="income" name="income">
         </div>
         <div>
             <label for="nationality">Nationality:</label>
-            <input type="text" id="nationality" name="nationality" required>
+            <input type="text" id="nationality" name="nationality">
         </div>
         <button type="submit">Submit</button>
         <button type="button" onclick="resetForm()">Reset</button>
@@ -127,7 +125,6 @@
             document.getElementById('customerForm').reset();
         } else {
             document.getElementById('message').innerHTML = errorMessage;
-            document.getElementById('message').style.color = 'red';
         }
     });
     
